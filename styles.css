@@ -226,6 +226,34 @@ svg {
   opacity: 0;
 }
 
+.letter-count-option-container {
+  display: flex;
+  gap: 1rem;
+  margin: 0 auto 1rem;
+}
+
+label:has([type='radio']) {
+  gap: 1rem;
+  border: 1px solid #aaa;
+  padding: 0.25rem 1rem;
+  border-radius: 3rem;
+  transition: background-color 0.3s;
+}
+
+label:has([type='radio']:not(:disabled)) {
+  cursor: pointer;
+}
+
+[type='radio'] {
+  display: none;
+}
+
+label:has([type='radio']:checked) {
+  border-color: #14bf8b;
+  background-color: #14bf8b;
+  color: #fff;
+}
+
 @media only screen and (min-width: 600px) {
   .guess-grid {
     grid-template-columns: repeat(5, 4rem);

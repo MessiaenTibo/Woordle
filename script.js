@@ -1,10 +1,13 @@
 import dictionary from './dictionary.json' with { type: "json"};
+import dictionary6 from './dictionary6.json' with { type: "json" };
+
 import targetWords from './targetWords.json' with { type: "json" };
+import targetWords6 from './targetWords6.json' with { type: "json" };
 
-const TargetWords = targetWords;
-const Dictionary = dictionary;
+let TargetWords = targetWords;
+let Dictionary = dictionary;
 
-const WORD_LENGTH = 5;
+let WORD_LENGTH = 5;
 const FLIP_ANIMATION_DURATION = 500;
 const DANCE_ANIMATION_DURATION = 500;
 const keyboard = document.querySelector('[data-keyboard]');
@@ -14,6 +17,59 @@ const guessGrid = document.querySelector('[data-guess-grid]');
 let targetWord = TargetWords[Math.floor(Math.random() * TargetWords.length)]
 
 startInteraction();
+
+const radioButtons = document.querySelectorAll('input[name="letterCount"]');
+
+  // Add an event listener to each radio button
+  radioButtons.forEach(radio => {
+    radio.addEventListener('change', (event) => {
+      if (event.target.checked) {
+        // Update the variable with the selected value
+        changeAmountOfLetters(parseInt(event.target.value, 10))
+      }
+    });
+});
+
+function changeAmountOfLetters(count) {
+  // Set new word lenght
+  WORD_LENGTH = count
+
+  // Change word list
+  if(count == 6)
+  {
+    TargetWords = targetWords6;
+    Dictionary = dictionary6;
+  } else {
+    TargetWords = targetWords;
+    Dictionary = dictionary;
+  }
+
+  // Change the html
+  const guessGrid = document.querySelector('.guess-grid')
+  guessGrid.innerHTML = '';
+  for(let i = 0; i < (6*WORD_LENGTH); i++){
+    const tile = document.createElement('div');
+    tile.classList.add('tile');
+    guessGrid.appendChild(tile);
+  }
+
+  // Change the css
+  let tileSize = "3rem"
+  if(window.innerWidth > 600) tileSize = "4rem"
+  if(window.innerWidth > 900 && window.innerHeight > 900) tileSize = "5rem"
+  guessGrid.style.gridTemplateColumns = `repeat(${WORD_LENGTH }, ${tileSize})`;
+
+  // Reset the game
+  resetGame()
+}
+
+window.addEventListener('resize', () =>{
+    // Change gird size if needed
+    let tileSize = "3rem"
+    if(window.innerWidth > 600) tileSize = "4rem"
+    if(window.innerWidth > 900 && window.innerHeight > 900) tileSize = "5rem"
+    guessGrid.style.gridTemplateColumns = `repeat(${WORD_LENGTH }, ${tileSize})`;
+})
 
 function startInteraction() {
   document.addEventListener('click', handleMouseClick);
