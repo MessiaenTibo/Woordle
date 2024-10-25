@@ -21,6 +21,7 @@ body {
   margin: auto;
   text-decoration: underline;
   text-underline-offset: 1rem;
+  padding-bottom: 1.5rem;
 }
 
 .keyboard {
@@ -234,7 +235,7 @@ svg {
   }
 }
 
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 900px) and (min-height: 900px) {
   .guess-grid {
     grid-template-columns: repeat(5, 5rem);
     grid-template-rows: repeat(6, 5rem);
