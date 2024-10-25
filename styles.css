@@ -263,6 +263,19 @@ label:has([type='radio']:checked:focus-visible) {
   color: #fff; /* Optional text color */
 }
 
+.guess-grid-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.adsbygoogle-sidebar {
+  display: none !important;
+}
+
+.adsbygoogle-footer {
+  display: block !important;
+}
+
 @media only screen and (min-width: 600px) {
   .guess-grid {
     grid-template-columns: repeat(5, 4rem);
@@ -278,5 +291,14 @@ label:has([type='radio']:checked:focus-visible) {
     grid-template-rows: repeat(6, 5rem);
     gap: 0.4rem;
     margin-bottom: 1rem;
+  }
+}
+
+@media only screen and (min-width: 1000px) and (min-height: 600px) {
+  .adsbygoogle-sidebar {
+    display: inline-block !important;
+  }
+  .adsbygoogle-footer {
+    display: none !important;
   }
 }
