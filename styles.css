@@ -245,13 +245,22 @@ label:has([type='radio']:not(:disabled)) {
 }
 
 [type='radio'] {
-  display: none;
+  display: hidden;
+  width: 0;
+  height: 0;
+  margin-left: -8px;
 }
 
 label:has([type='radio']:checked) {
-  border-color: #14bf8b;
+  border: 2px solid #14bf8b;
   background-color: #14bf8b;
   color: #fff;
+}
+
+label:has([type='radio']:checked:focus-visible) {
+  border: 2px solid black; /* Adds a red border when selected by keyboard tabbing */
+  background-color: #14bf8bbb; /* Optional background color for visual feedback */
+  color: #fff; /* Optional text color */
 }
 
 @media only screen and (min-width: 600px) {
