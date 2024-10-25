@@ -101,41 +101,63 @@ function submitGuess() {
 
 
 function flipTile(tile, index, array, guess) {
-  const letter = tile.dataset.letter;
-  const key = keyboard.querySelector(`[data-key="${letter}"i]`);
-  setTimeout(() => {
-    tile.classList.add('flip');
-  }, (index * FLIP_ANIMATION_DURATION) / 2);
-
-  tile.addEventListener(
-    'transitionend',
-    () => {
-      tile.classList.remove('flip');
-      if (targetWord[index] === letter) {
-        tile.dataset.state = 'correct';
-        key.classList.add('correct');
-      } else if (targetWord.includes(letter)) {
-        tile.dataset.state = 'wrong-location';
-        key.classList.add('wrong-location');
-      } else {
-        tile.dataset.state = 'wrong';
-        key.classList.add('wrong');
+    const guessLetters = guess.split('');
+    let tempTargetWord = targetWord.split(''); // Create a mutable copy of the target word
+  
+    // Store marking results here for applying after animation
+    const markingResults = Array(array.length).fill('wrong');
+  
+    // First pass: Mark letters that are correct (green) and remove them from tempTargetWord
+    guessLetters.forEach((letter, i) => {
+      if (tempTargetWord[i] === letter) {
+        markingResults[i] = 'correct';
+        tempTargetWord[i] = null; // Remove from temp to prevent double-counting
       }
-
-      if (index === array.length - 1) {
-        tile.addEventListener(
-          'transitionend',
-          () => {
-            startInteraction();
-            checkWinLose(guess, array);
-          },
-          { once: true }
-        );
+    });
+  
+    // Second pass: Mark letters that are in the word but in the wrong location (yellow)
+    guessLetters.forEach((letter, i) => {
+      if (markingResults[i] !== 'correct' && tempTargetWord.includes(letter)) {
+        markingResults[i] = 'wrong-location';
+        tempTargetWord[tempTargetWord.indexOf(letter)] = null; // Remove to prevent double-counting
       }
-    },
-    { once: true }
-  );
+    });
+  
+    // Flip tiles with a smooth transition, applying marking results after flipping
+    array.forEach((tile, i) => {
+      const letter = tile.dataset.letter;
+      const key = keyboard.querySelector(`[data-key="${letter}"i]`);
+  
+
+      // Apply flip effect with delay
+      setTimeout(() => {
+        tile.classList.add('flip');
+      }, (i * FLIP_ANIMATION_DURATION) / 2);
+
+      tile.addEventListener('transitionend', () => {
+        tile.classList.remove('flip');
+
+        // Apply marking results to each tile
+        tile.dataset.state = markingResults[i];
+        if (markingResults[i] === 'correct') {
+          key.classList.add('correct');
+        } else if (markingResults[i] === 'wrong-location') {
+          key.classList.add('wrong-location');
+        } else {
+          key.classList.add('wrong');
+        }
+      }, { once: true });
+    });
+
+    if (index === array.length - 1) {
+        setTimeout(() => {
+        startInteraction();
+        checkWinLose(guess, array);
+        }, FLIP_ANIMATION_DURATION * 5/2);
+    }
 }
+  
+  
 
 function getActiveTiles() {
   return guessGrid.querySelectorAll('[data-state="active"]');
