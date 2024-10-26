@@ -2,7 +2,7 @@
 *::after,
 *::before {
   box-sizing: border-box;
-  font-family: cursive, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
@@ -12,11 +12,11 @@ body {
   min-height: 100vh;
   margin: 0;
   padding: 1em;
-  font-size: clamp(0.5rem, 2.5vmin, 1.5rem);
+  font-size: clamp(1rem, 2.5vmin, 1.5rem);
 }
 
 .title {
-  font-size: clamp(1rem, 4vmin, 2.5rem);
+  font-size: clamp(1.5rem, 4vmin, 2.5rem);
   margin-top: 0;
   margin: auto;
   text-decoration: underline;
@@ -26,7 +26,7 @@ body {
 
 .keyboard {
   display: grid;
-  grid-template-columns: repeat(20, minmax(auto, 1.25em));
+  grid-template-columns: repeat(20, minmax(0.5rem, 1.25em));
   grid-auto-rows: 3em;
   gap: 0.25em;
   justify-content: center;
@@ -282,6 +282,9 @@ label:has([type='radio']:checked:focus-visible) {
     grid-template-rows: repeat(6, 4rem);
     gap: 0.3rem;
     margin-bottom: 1rem;
+  }
+  * {
+    font-family: cursive, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
 }
 
