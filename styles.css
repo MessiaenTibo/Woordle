@@ -276,6 +276,11 @@ label:has([type='radio']:checked:focus-visible) {
   display: block !important;
 }
 
+.center-container {
+  display: flex;
+  justify-content: center;
+}
+
 @media only screen and (min-width: 600px) {
   .guess-grid {
     grid-template-columns: repeat(5, 4rem);
@@ -303,5 +308,8 @@ label:has([type='radio']:checked:focus-visible) {
   }
   .adsbygoogle-footer {
     display: none !important;
+  }
+  .center-container {
+    justify-content: space-between;
   }
 }
