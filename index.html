@@ -15,7 +15,10 @@
 
     <!-- Open Graph / Facebook Meta Tags -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://messiaentibo.github.io/Woordle/" />
+    <meta
+      property="og:url"
+      content="https://nederlandse-woordle.netlify.app/"
+    />
     <meta
       property="og:title"
       content="Play Wordle Clone - Daily Dutch Word Game"
@@ -26,14 +29,14 @@
     />
     <meta
       property="og:image"
-      content="https://messiaentibo.github.io/Woordle/og-image.jpeg"
+      content="https://nederlandse-woordle.netlify.app/og-image.jpeg"
     />
 
     <!-- Twitter Meta Tags -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta
       property="twitter:url"
-      content="https://messiaentibo.github.io/Woordle/"
+      content="https://nederlandse-woordle.netlify.app/"
     />
     <meta
       property="twitter:title"
@@ -45,7 +48,7 @@
     />
     <meta
       property="twitter:image"
-      content="https://messiaentibo.github.io/Woordle/twitter-image.jpeg"
+      content="https://nederlandse-woordle.netlify.app/twitter-image.jpeg"
     />
 
     <!-- Additional SEO Meta Tags -->
@@ -64,7 +67,7 @@
     <!-- PWA -->
     <link
       rel="manifest"
-      href="https://messiaentibo.github.io/Woordle/manifest.json"
+      href="https://nederlandse-woordle.netlify.app/manifest.json"
     />
 
     <!-- Google Site Verification -->
@@ -78,7 +81,12 @@
   </head>
   <body>
     <div class="alert-container" data-alert-container></div>
-    <h1 class="title">Nederlandse Woordle!</h1>
+    <!-- Button to open the modal -->
+    <div class="header">
+      <button id="openModalBtn" class="open-modal-btn">?</button>
+      <h1 class="title">Nederlandse Woordle!</h1>
+      <button class="open-modal-btn-empty"></button>
+    </div>
     <div class="letter-count-option-container">
       <label>
         <input type="radio" value="5" name="letterCount" checked />
@@ -221,6 +229,48 @@
       <script>
         (adsbygoogle = window.adsbygoogle || []).push({});
       </script>
+    </div>
+    <!-- Modal overlay and content -->
+    <div class="modal-overlay" id="modalOverlay">
+      <div class="modal-content">
+        <button class="modal-close" id="closeModalBtn">&times;</button>
+        <h2>Instructies</h2>
+        <p class="modal-text">
+          Raad het WOORDLE in 6 keer. Na elke gok zullen de kleuren van de
+          vakjes aangeven hoe dichtbij je was.
+        </p>
+        <div class="seperator-line"></div>
+        <div class="guess-row">
+          <div class="tile" data-state="correct">W</div>
+          <div class="tile">O</div>
+          <div class="tile">O</div>
+          <div class="tile">R</div>
+          <div class="tile">D</div>
+        </div>
+        <p class="modal-text">
+          De letter <b>W</b> zit op de juiste plek in het woord.
+        </p>
+        <div class="guess-row">
+          <div class="tile">P</div>
+          <div class="tile" data-state="wrong-location">U</div>
+          <div class="tile">P</div>
+          <div class="tile">I</div>
+          <div class="tile">L</div>
+        </div>
+        <p class="modal-text">
+          De letter <b>U</b> zit in het woord maar op een andere plek.
+        </p>
+        <div class="guess-row">
+          <div class="tile">T</div>
+          <div class="tile">R</div>
+          <div class="tile">O</div>
+          <div class="tile" data-state="wrong">E</div>
+          <div class="tile">P</div>
+        </div>
+        <p class="modal-text">
+          De letter <b>E</b> zit helemaal niet in het woord.
+        </p>
+      </div>
     </div>
   </body>
 </html>

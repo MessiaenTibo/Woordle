@@ -2,25 +2,25 @@
   "name": "Tibo Messiaen",
   "short_name": "Woordle",
   "description": "Nederlandse woordle versie voor 5 en 6 letter woorden!",
-  "start_url": "https://messiaentibo.github.io/Woordle/",
+  "start_url": "https://nederlandse-woordle.netlify.app/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#000000",
   "icons": [
     {
-      "src": "https://messiaentibo.github.io/Woordle/icon-144x144.png",
+      "src": "https://nederlandse-woordle.netlify.app/icon-144x144.png",
       "sizes": "144x144",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "https://messiaentibo.github.io/Woordle/icon-192x192.png",
+      "src": "https://nederlandse-woordle.netlify.app/icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "https://messiaentibo.github.io/Woordle/icon-512x512.png",
+      "src": "https://nederlandse-woordle.netlify.app/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"

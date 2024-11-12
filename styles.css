@@ -15,6 +15,12 @@ body {
   font-size: clamp(1rem, 2.5vmin, 1.5rem);
 }
 
+.header {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
 .title {
   font-size: clamp(1.5rem, 4vmin, 2.5rem);
   margin-top: 0;
@@ -94,6 +100,18 @@ svg {
   flex-grow: 1;
   grid-template-columns: repeat(5, 3rem);
   grid-template-rows: repeat(6, 3rem);
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+/* Guess row example for info */
+.guess-row {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  flex-grow: 1;
+  grid-template-columns: repeat(5, 3rem);
+  grid-template-rows: 3rem;
   gap: 0.25rem;
   margin-bottom: 1rem;
 }
@@ -281,12 +299,113 @@ label:has([type='radio']:checked:focus-visible) {
   justify-content: center;
 }
 
+/* Modal */
+.open-modal-btn {
+  width: 2rem;
+  height: 2rem;
+  font-size: large;
+  font-weight: 900;
+  background-color: transparent;
+  border-radius: 999px;
+  cursor: pointer;
+}
+/* Empty modal button to center the title */
+.open-modal-btn-empty {
+  width: 2rem;
+  height: 2rem;
+  background: transparent;
+  border: none;
+}
+/* Style for the modal background overlay */
+.modal-overlay {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* On top of all other elements */
+}
+
+/* Style for the modal box */
+.modal-content {
+  position: relative;
+  background: white;
+  padding: 0 12px 12px 12px;
+  border-radius: 8px;
+  max-width: 300px;
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+/* Close button styling */
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 30px;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.modal-text {
+  text-align: start;
+}
+
+.seperator-line {
+  height: 2px;
+  width: 100%;
+  background-color: hsl(240, 2%, 23%);
+  margin-bottom: 16px;
+}
+
+/* Responsive media query */
+@media (max-width: 500px) {
+  .modal-content {
+    width: 90%;
+  }
+}
+
 @media only screen and (min-width: 600px) {
   .guess-grid {
     grid-template-columns: repeat(5, 4rem);
     grid-template-rows: repeat(6, 4rem);
     gap: 0.3rem;
     margin-bottom: 1rem;
+  }
+  .guess-row {
+    grid-template-columns: repeat(5, 4rem);
+    grid-template-rows: 4rem;
+    gap: 0.3rem;
+  }
+  .modal-content {
+    padding: 0 32px 8px 32px;
+    max-width: 420px;
+    width: 420px;
+  }
+  .modal-close {
+    background: none;
+    border: none;
+    font-size: 40px;
+    line-height: 24px;
+    cursor: pointer;
+    position: absolute;
+    top: 14px;
+    right: 14px;
+  }
+  .open-modal-btn {
+    width: 3rem;
+    height: 3rem;
+    font-size: 2rem;
+  }
+  .open-modal-btn-empty {
+    width: 3rem;
+    height: 3rem;
   }
   * {
     font-family: cursive, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -299,6 +418,16 @@ label:has([type='radio']:checked:focus-visible) {
     grid-template-rows: repeat(6, 5rem);
     gap: 0.4rem;
     margin-bottom: 1rem;
+  }
+  .guess-row {
+    grid-template-columns: repeat(5, 5rem);
+    grid-template-rows: 5rem;
+    gap: 0.4rem;
+  }
+  .modal-content {
+    padding: 0 40px 12px 40px;
+    max-width: 500px;
+    width: 500px;
   }
 }
 

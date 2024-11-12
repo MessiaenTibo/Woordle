@@ -46,6 +46,26 @@ const guessGrid = document.querySelector('[data-guess-grid]');
 
 startInteraction();
 
+// JavaScript for opening and closing the modal
+const openModalBtn = document.getElementById('openModalBtn');
+const modalOverlay = document.getElementById('modalOverlay');
+const closeModalBtn = document.getElementById('closeModalBtn');
+
+openModalBtn.addEventListener('click', () => {
+  modalOverlay.style.display = 'flex'; // Show modal
+});
+
+closeModalBtn.addEventListener('click', () => {
+  modalOverlay.style.display = 'none'; // Hide modal
+});
+
+// Hide modal when clicking outside of the modal content
+modalOverlay.addEventListener('click', (event) => {
+  if (event.target === modalOverlay) {
+    modalOverlay.style.display = 'none';
+  }
+});
+
 const radioButtons = document.querySelectorAll('input[name="letterCount"]');
 
 // Add an event listener to each radio button
