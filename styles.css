@@ -270,15 +270,15 @@ label:has([type='radio']:not(:disabled)) {
 }
 
 label:has([type='radio']:checked) {
-  border: 2px solid #14bf8b;
-  background-color: #14bf8b;
+  border: 2px solid #0f8560;
+  background-color: #0f8560;
   color: #fff;
 }
 
 label:has([type='radio']:checked:focus-visible) {
-  border: 2px solid black; /* Adds a red border when selected by keyboard tabbing */
-  background-color: #14bf8bbb; /* Optional background color for visual feedback */
-  color: #fff; /* Optional text color */
+  border: 2px solid black;
+  background-color: #0f8560bb;
+  color: #fff;
 }
 
 .guess-grid-container {
